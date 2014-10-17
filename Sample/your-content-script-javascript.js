@@ -12,13 +12,13 @@ $(document).ready(function() {
 	});
 
 	/* create & init a second box */
-	var yourBoxTwoID = Boundary.createBox("yourBoxTwoID", "yourboxTwoClassName");
+	var yourBoxTwoID =
+		Boundary.createBox("yourBoxTwoID", "yourboxTwoClassName")
+		.html(		
+			"<div id='message'></div>" +
+			"<div><button class='button'>Click me second!</button></div>"
+		);
 	Boundary.loadBoxCSS("#yourBoxTwoID", chrome.extension.getURL('your-stylesheet-for-elements-within-boxes.css'));
-	/* modify box content */
-	Boundary.prependToBox("#yourBoxTwoID",
-		"<div id='message'></div>" +
-		"<div><button class='button'>Click me second!</button></div>"
-	);
 	/* add some silly interaction to box two */
 	Boundary.findElemInBox(".button", "#yourBoxTwoID").click(function() {
 		Boundary.find(".button").remove();
