@@ -58,3 +58,13 @@ Boundary.prependToElemInBox(elemSelector, boxSelector, HTML)
 /******************************** helpers ********************************/
 
 Boundary.findBoxBody(boxSelector);
+
+
+NOTES:
+
+If you what to do
+
+Boundary.find().click(function() {
+});
+
+It's recommented that you return false within the callback function.
