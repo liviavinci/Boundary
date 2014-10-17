@@ -1,5 +1,7 @@
 var Boundary = {};
 
+/******************************** create a box ********************************/
+
 Boundary.createBox = function(attrs) {
 	if (attrs) {
 		if (attrs.class) {
@@ -7,6 +9,8 @@ Boundary.createBox = function(attrs) {
 		} else {
 			attrs.class = "boundary-default-iframe";
 		}
+	} else {
+		attrs = {"class" : "boundary-default-iframe"}
 	}
 	var iframe = $('<iframe />', attrs);
 	$("body").append(iframe);
@@ -19,8 +23,10 @@ Boundary.createBox = function(attrs) {
 	return iframe;
 };
 
+/******************************** style elements within a box ********************************/
+
 Boundary.loadBoxCSS = function(boxSelector, CSSPath) {
-	var head = $("iframe.boundary-default-iframe" + boxSelector).contents().find("head");
+	var head = $(boxSelector).contents().find("head");
 	head.append($("<link/>", {
 		rel: "stylesheet",
 		href: CSSPath,
@@ -28,9 +34,7 @@ Boundary.loadBoxCSS = function(boxSelector, CSSPath) {
 	}));
 };
 
-Boundary.findBoxBody = function(boxSelector) {
-	return $("iframe.boundary-default-iframe" + boxSelector).contents().find("body");
-};
+/******************************** find/modify a specific boxe ********************************/
 
 Boundary.rewriteBox = function(boxSelector, HTML) {
 	Boundary.findBoxBody(boxSelector).html(HTML)
@@ -44,14 +48,44 @@ Boundary.prependToBox = function(boxSelector, HTML) {
 	Boundary.findBoxBody(boxSelector).prepend(HTML)
 };
 
-Boundary.find = function(selector) {
-	return $(".boundary-default-iframe").contents().find(selector);
+/******************************** find/modify elements within all boxes ********************************/
+
+Boundary.find = function(elemSelector) {
+	return $("iframe.boundary-default-iframe").contents().find(elemSelector);
 };
 
-Boundary.append = function(selector, HTML) {
-	Boundary.find(selector).append(HTML);
+Boundary.rewrite = function(elemSelector, HTML) {
+	Boundary.find(elemSelector).html(HTML)
 };
 
-Boundary.prepend = function(selector, HTML) {
-	Boundary.find(selector).prepend(HTML);
+Boundary.append = function(elemSelector, HTML) {
+	Boundary.find(elemSelector).append(HTML);
+};
+
+Boundary.prepend = function(elemSelector, HTML) {
+	Boundary.find(elemSelector).prepend(HTML);
+};
+
+/******************************** find/modify elements within a specific box ********************************/
+
+Boundary.findElemInBox = function(elemSelector, boxSelector) {
+	return $(boxSelector).contents().find(elemSelector);
+};
+
+Boundary.rewriteElemInBox = function(elemSelector, boxSelector, HTML) {
+	Boundary.findElemInBox(elemSelector, boxSelector).html(HTML)
+};
+
+Boundary.appendToElemInBox = function(elemSelector, boxSelector, HTML) {
+	Boundary.findElemInBox(elemSelector, boxSelector).append(HTML);
+};
+
+Boundary.prependToElemInBox = function(elemSelector, boxSelector, HTML) {
+	Boundary.findElemInBox(elemSelector, boxSelector).prepend(HTML);
+};
+
+/******************************** helpers ********************************/
+
+Boundary.findBoxBody = function(boxSelector) {
+	return $(boxSelector).contents().find("body");
 };

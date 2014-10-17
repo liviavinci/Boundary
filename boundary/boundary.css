@@ -265,20 +265,3 @@ iframe.boundary-default-iframe {
 	zoom: initial;
 	border: none;
 }
-
-iframe#starry-sidebar {
-	position: fixed;
-	top: 0;
-	right: -310px;
-	/* prevent right side from showing empty pixels */
-	width: 310px;
-	padding-right: 10px;
-	height: 100vh;
-	z-index: 99999999999999999;
-	display: none;
-	background: rgba(76,76,94,0.97);
-   	-webkit-box-shadow: -2px 0 10px rgba(0,0,0,0.5);
-   	box-shadow:         -2px 0 10px rgba(0,0,0,0.5);
-  	overflow-y: scroll;
-  	overflow-x: hidden;
-}
