@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+
+  "name": "Boundary Sample",
+  "version": "0.1",
+
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "tabs",
+    "background"
+  ],
+
+  "content_scripts": [{
+      "matches": ["http://*/*", "https://*/*"],
+      "css": [
+        "boundary/boundary.css",
+        "your-stylesheet-for-boxes.css"
+      ],
+      "js": [
+        "boundary/jquery.js",
+        "boundary/boundary.js",
+        "your-content-script-javascript.js"
+      ],
+      "all_frames": false
+  }],
+
+  "web_accessible_resources": [
+    "boundary/boundary-extra.css",
+    "your-stylesheet-for-elements-within-boxes.css"
+  ]
+}
