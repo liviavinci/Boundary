@@ -27,6 +27,10 @@ Boundary is a CSS+Javascript library for Chrome extension developers to easily c
 
 Boundary.createBox(attrs);
 
+/******************************** remove a box ********************************/
+
+$(boxSelector).remove();
+
 /******************************** style elements within a box ********************************/
 
 Boundary.loadBoxCSS(boxSelector, CSSPath);
