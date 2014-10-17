@@ -25,6 +25,8 @@ Boundary.loadBoxCSS(boxSelector, CSSPath);
 
 /******************************** find/modify a specific boxe ********************************/
 
+Boundary.findBox(boxSelector);
+
 Boundary.rewriteBox(boxSelector, HTML);
 
 Boundary.appendToBox(boxSelector, HTML);
@@ -52,11 +54,6 @@ Boundary.rewriteElemInBox(elemSelector, boxSelector, HTML);
 Boundary.appendToElemInBox(elemSelector, boxSelector, HTML);
 
 Boundary.prependToElemInBox(elemSelector, boxSelector, HTML)
-
-
-/******************************** helpers ********************************/
-
-Boundary.findBoxBody(boxSelector);
 
 
 NOTES:

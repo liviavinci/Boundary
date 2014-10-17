@@ -1,4 +1,4 @@
-#yourBoxOne {
+#yourBoxOneID {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -7,7 +7,7 @@
 	background: blue;
 }
 
-#yourBoxTwo {
+#yourBoxTwoID {
 	position: fixed;
 	top: 0;
 	left: 0;
