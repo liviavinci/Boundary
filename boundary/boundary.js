@@ -51,7 +51,7 @@ Boundary.prependToBox = function(boxSelector, HTML) {
 /******************************** find/modify elements within all boxes ********************************/
 
 Boundary.find = function(elemSelector) {
-	return $("iframe.boundary-default-iframe").contents().find(elemSelector);
+	return $(".boundary-default-iframe").contents().find(elemSelector);
 };
 
 Boundary.rewrite = function(elemSelector, HTML) {
