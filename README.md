@@ -11,8 +11,7 @@ Take a look at Sample manifest.json.
 
 /******************************** create a box ********************************/
 
-Boundary.createBox(attrs);
-
+Boundary.createBox(id, className);
 
 /******************************** remove a box ********************************/
 

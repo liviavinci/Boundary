@@ -2,17 +2,11 @@ var Boundary = {};
 
 /******************************** create a box ********************************/
 
-Boundary.createBox = function(attrs) {
-	if (attrs) {
-		if (attrs.class) {
-			attrs.class = "boundary-default-iframe " + attrs.class;
-		} else {
-			attrs.class = "boundary-default-iframe";
-		}
-	} else {
-		attrs = {"class" : "boundary-default-iframe"}
-	}
-	var iframe = $('<iframe />', attrs);
+Boundary.createBox = function(id, className) {
+	var iframe = $('<iframe />', {
+		"id" : id,
+		"class" : className ? "boundary-default-iframe " + className : "boundary-default-iframe"
+	});
 	$("body").append(iframe);
 	iframe.contents().find("head").append($("<link/>", {
 		rel: "stylesheet",
@@ -20,7 +14,7 @@ Boundary.createBox = function(attrs) {
 		type: "text/css"
 	}));
 
-	return iframe;
+	return iframe.contents().find("body");
 };
 
 /******************************** style elements within a box ********************************/
@@ -36,16 +30,20 @@ Boundary.loadBoxCSS = function(boxSelector, CSSPath) {
 
 /******************************** find/modify a specific boxe ********************************/
 
+Boundary.findBox = function(boxSelector) {
+	return $(boxSelector).contents().find("body");
+};
+
 Boundary.rewriteBox = function(boxSelector, HTML) {
-	Boundary.findBoxBody(boxSelector).html(HTML)
+	Boundary.findBox(boxSelector).html(HTML)
 };
 
 Boundary.appendToBox = function(boxSelector, HTML) {
-	Boundary.findBoxBody(boxSelector).append(HTML)
+	Boundary.findBox(boxSelector).append(HTML)
 };
 
 Boundary.prependToBox = function(boxSelector, HTML) {
-	Boundary.findBoxBody(boxSelector).prepend(HTML)
+	Boundary.findBox(boxSelector).prepend(HTML)
 };
 
 /******************************** find/modify elements within all boxes ********************************/
@@ -82,10 +80,4 @@ Boundary.appendToElemInBox = function(elemSelector, boxSelector, HTML) {
 
 Boundary.prependToElemInBox = function(elemSelector, boxSelector, HTML) {
 	Boundary.findElemInBox(elemSelector, boxSelector).prepend(HTML);
-};
-
-/******************************** helpers ********************************/
-
-Boundary.findBoxBody = function(boxSelector) {
-	return $(boxSelector).contents().find("body");
 };
