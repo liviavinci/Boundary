@@ -13,6 +13,7 @@ Take a look at Sample manifest.json.
 
 Boundary.createBox(id, className);
 
+
 /******************************** remove a box ********************************/
 
 $(boxSelector).remove();
@@ -54,6 +55,7 @@ Boundary.rewriteElemInBox(elemSelector, boxSelector, HTML);
 Boundary.appendToElemInBox(elemSelector, boxSelector, HTML);
 
 Boundary.prependToElemInBox(elemSelector, boxSelector, HTML)
+
 
 
 NOTES:
