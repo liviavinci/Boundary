@@ -3,10 +3,12 @@ var Boundary = {};
 /******************************** create a box ********************************/
 
 Boundary.createBox = function(id, className) {
-	var iframe = $('<iframe />', {
-		"id" : id,
-		"class" : className ? "boundary-default-iframe " + className : "boundary-default-iframe"
-	});
+	var attrs = {};
+	if (id) {
+		attrs.id = id;
+	}
+	attrs.class = className ? "boundary-default-iframe " + className : "boundary-default-iframe";
+	var iframe = $('<iframe />', attrs);
 	$("body").append(iframe);
 	iframe.contents().find("head").append($("<link/>", {
 		rel: "stylesheet",
