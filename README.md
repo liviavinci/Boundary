@@ -67,8 +67,7 @@ Boundary.find().click(function() {
 
 It's recommented that you return false within the callback function.
 
-
-The MIT License (MIT)
+/******************************** The MIT License (MIT)  ********************************/
 
 Copyright (c) 2015 Livia Zhang
 
