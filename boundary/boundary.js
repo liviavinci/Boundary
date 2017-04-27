@@ -9,7 +9,9 @@ Boundary.createBox = function(id, className) {
 	}
 	attrs.class = className ? "boundary-default-iframe " + className : "boundary-default-iframe";
 	var iframe = $('<iframe />', attrs);
-	$("body").append(iframe);
+	if (window.self === window.top) {
+    	$("body").append(iframe);
+	}
 	iframe.contents().find("head").append($("<link/>", {
 		rel: "stylesheet",
 		href: chrome.extension.getURL('boundary/boundary-extra.css'),
@@ -27,6 +29,14 @@ Boundary.loadBoxCSS = function(boxSelector, CSSPath) {
 		rel: "stylesheet",
 		href: CSSPath,
 		type: "text/css"
+	}));
+};
+
+Boundary.loadBoxJS = function(boxSelector, JSPath) {
+	var head = $(boxSelector).contents().find("head");
+	head.append($("<link/>", {
+		href: JSPath,
+		type: "text/javascript"
 	}));
 };
 
